@@ -19,6 +19,13 @@ body {
     width: 100%;
 }
 
+/* Content styles */
+.content {
+    height: 100%;
+    margin-left:20%;
+    padding: 10px;
+}
+
 /* Navbar styles */
 .navbar ul {
 list-style-type: none;

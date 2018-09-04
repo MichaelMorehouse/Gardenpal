@@ -4,10 +4,12 @@ import NavBar from './NavBar'
 
 export default ({ children }) => {
   return (
-    <div>
+    <div className="App">
         <AuthBar />
         <NavBar />
-        {children}
+        <div className="content">
+          {children}
+        </div>
     </div>
   )
 }
