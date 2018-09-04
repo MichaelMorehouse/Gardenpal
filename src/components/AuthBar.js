@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
-import './HeaderStyle.css'
+import './style.css'
 
-class Header extends Component {
+class AuthBar extends Component {
     renderLinks() {
       if (this.props.authenticated) {
         return (
@@ -24,7 +24,7 @@ class Header extends Component {
 
     render() {
       return (
-        <div className="header">
+        <div className="authbar">
           <Link to="/">Redux Auth</Link>
           {this.renderLinks()}
         </div>
@@ -32,8 +32,6 @@ class Header extends Component {
     }
 }
 
-function mapStateToProps(state) {
-  return { authenticated: state.auth.authenticated}
-}
+const mapStateToProps = state => ({ authenticated: state.auth.authenticated })
 
-export default connect(mapStateToProps)(Header)
+export default connect(mapStateToProps)(AuthBar)

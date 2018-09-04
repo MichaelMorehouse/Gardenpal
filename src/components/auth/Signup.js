@@ -13,7 +13,8 @@ class Signup extends Component {
 
     render() {
         const { handleSubmit } = this.props
-      return (
+
+        return (
           <form onSubmit={handleSubmit(this.onSubmit)}>
               <fieldset>
                   <label>Email</label>
@@ -42,9 +43,8 @@ class Signup extends Component {
     }
 }
 
-function mapStateToProps(state) {
-    return { errorMessage: state.auth.errorMessage }
-}
+const mapStateToProps = state => ({ authenticated: state.auth.errorMessage })
+
 
 export default compose(
     connect(mapStateToProps, actions),

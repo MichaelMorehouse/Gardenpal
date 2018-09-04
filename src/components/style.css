@@ -1,0 +1,54 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+}  
+
+.authbar {
+    display: flex;
+    justify-content: space-between;
+    background: linear-gradient(to bottom left, #d2fffb, white);
+}
+
+.authbar a {
+    margin: 0 10px;
+}
+
+.App {
+    height: 100%;
+    width: 100%;
+}
+
+/* Navbar styles */
+.navbar ul {
+list-style-type: none;
+margin: 0;
+padding: 0;
+width: 20%;
+background: linear-gradient(to bottom left, #d2fffb, white);
+height: 100%; /* Full height */
+position: fixed; /* Make it stick, even on scroll */
+overflow: auto; /* Enable scrolling if the sidenav has too much content */
+box-shadow: 2px 0px aliceblue;
+}
+
+.navbar li {
+border-bottom: 1px solid azure;
+}
+
+.navbar li a{
+display: block;
+color: b;
+padding: 8px 16px;
+text-decoration: none;
+}
+
+.navbar li .active {
+background-color: rgb(151, 255, 255);
+color: #fff;
+}
+
+.navbar li a:hover:not(.active) {
+background-color: azure;
+color: rgba(127, 255, 212, 0.5);
+}

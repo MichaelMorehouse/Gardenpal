@@ -1,10 +1,12 @@
 import React from 'react'
-import Header from './Header'
+import AuthBar from './AuthBar'
+import NavBar from './NavBar'
 
 export default ({ children }) => {
   return (
     <div>
-        <Header />
+        <AuthBar />
+        <NavBar />
         {children}
     </div>
   )
