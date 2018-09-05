@@ -5,9 +5,8 @@ import NavBar from './NavBar'
 export default ({ children }) => {
   return (
     <div className="App">
-        <AuthBar />
         <NavBar />
-        <div className="content">
+        <div className="AppChild">
           {children}
         </div>
     </div>

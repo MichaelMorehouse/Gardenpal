@@ -4,29 +4,24 @@ body {
     font-family: sans-serif;
 }  
 
-.authbar {
-    display: flex;
-    justify-content: space-between;
-    background: linear-gradient(to bottom left, #d2fffb, white);
-}
-
-.authbar a {
-    margin: 0 10px;
-}
-
 .App {
     height: 100%;
     width: 100%;
 }
 
-/* Content styles */
-.content {
+/* Styles all page content outside the navbar */
+.AppChild {
     height: 100%;
     margin-left:20%;
     padding: 10px;
 }
 
 /* Navbar styles */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+}
+
 .navbar ul {
 list-style-type: none;
 margin: 0;

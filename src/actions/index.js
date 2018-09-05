@@ -38,7 +38,7 @@ export const signin = (formProps, callback) => async dispatch => {
     }
 }
 
-export const gardencreate = (formProps, callback) => async dispatch => {
+export const gardenCreate = (formProps, callback) => async dispatch => {
     try {
         const response = await axios.post(
             'http://localhost:3090/gardencreate',
@@ -61,4 +61,8 @@ export const gardenFetchAll = () => async dispatch => {
     } catch (err) {
         dispatch({type: types.GARDEN_ERROR, payload: 'Error retrieving garden list'})
     }
+}
+
+export const gardenActivate = (garden) => {
+    
 }

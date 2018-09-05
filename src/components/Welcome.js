@@ -2,6 +2,9 @@ import React from 'react'
 
 export default () => {
   return (
-    <h3>Welcome! Sign up or sign in!</h3>
+    <div>
+      <h3>Welcome to GardenPal!</h3>
+      <p>Sign in or sign up to continue</p>
+    </div>
   )
 }
