@@ -40,11 +40,10 @@ export const signin = (formProps, callback) => async dispatch => {
 
 export const gardenCreate = (formProps, callback) => async dispatch => {
     try {
-        const response = await axios.post(
+        await axios.post(
             'http://localhost:3090/gardencreate',
             formProps
         )
-        console.log(formProps)
         callback()
     } catch (err) {
         dispatch({type: types.GARDEN_ERROR, payload: 'Invalid garden properties'})

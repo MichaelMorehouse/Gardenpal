@@ -12,7 +12,7 @@ import Signup from './components/auth/Signup'
 import Garden from './components/garden/Garden'
 import Signout from './components/auth/Signout'
 import Signin from './components/auth/Signin'
-import Welcome from './components/Welcome'
+import Splash from './components/Splash'
 import GardenList from './components/GardenList'
 import GardenCreate from './components/GardenCreate'
 
@@ -28,7 +28,7 @@ ReactDOM.render(
     <Provider store={store}>
         <BrowserRouter>
             <App>
-                <Route exact path="/" component={Welcome} />
+                <Route exact path="/" component={Splash} />
                 <Route path="/signup" component={Signup} />
                 <Route path="/signout" component={Signout} />
                 <Route path="/signin" component={Signin} />
