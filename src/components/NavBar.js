@@ -8,8 +8,8 @@ export class NavBar extends Component {
       return (
         <div>
           <li><NavLink to="/garden">Your Garden</NavLink></li>
-          <li><NavLink to="/newgarden">New Garden</NavLink></li>
-          <li><NavLink to="/gardenlist">History</NavLink></li>
+          <li><NavLink to="/creategarden">Create a new Garden</NavLink></li>
+          <li><NavLink to="/gardenlist">All Gardens</NavLink></li>
         </div>
       )
     }

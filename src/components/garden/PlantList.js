@@ -4,7 +4,6 @@ import { connect } from 'react-redux'
 
 export class PlantList extends Component {
   static propTypes = {
-    prop: PropTypes
   }
 
   render() {

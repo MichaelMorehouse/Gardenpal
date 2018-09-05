@@ -12,6 +12,8 @@ import Garden from './components/garden/Garden'
 import Signout from './components/auth/Signout'
 import Signin from './components/auth/Signin'
 import Welcome from './components/Welcome'
+import GardenList from './components/GardenList'
+import GardenCreate from './components/GardenCreate'
 
 const store = createStore(
     reducers,
@@ -25,11 +27,13 @@ ReactDOM.render(
     <Provider store={store}>
         <BrowserRouter>
             <App>
-                <Route path="/" component={Welcome} />
+                <Route exact path="/" component={Welcome} />
                 <Route path="/signup" component={Signup} />
                 <Route path="/signout" component={Signout} />
                 <Route path="/signin" component={Signin} />
                 <Route path="/garden" component={Garden} />
+                <Route path="/creategarden" component={GardenCreate} />
+                <Route path="/gardenlist" component={GardenList} />
             </App>
         </BrowserRouter>
     </Provider>,

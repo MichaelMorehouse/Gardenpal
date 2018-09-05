@@ -9,7 +9,6 @@ class AuthBar extends Component {
         return (
           <div>
             <Link to="/signout">Sign out</Link>
-            <Link to="/feature">Feature</Link>
           </div>
         )
       } else {
@@ -25,7 +24,7 @@ class AuthBar extends Component {
     render() {
       return (
         <div className="authbar">
-          <Link to="/">Redux Auth</Link>
+          <Link to="/">Gardenpal</Link>
           {this.renderLinks()}
         </div>
       )
