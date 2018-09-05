@@ -11,8 +11,17 @@ export class GardenList extends Component {
     this.props.gardenFetchAll()
   }
   
-  renderGardenList = () => this.props.gardens.map(garden => <p key={garden._id}>{garden.name}</p>)
-      
+  renderGardenList = () => this.props.gardens.map(garden => {
+    return (
+      <div>
+        {Object.keys(garden).map((prop, i) =>
+            <div key={i}>{prop}: {garden[prop]}</div>
+        )}
+        <br />
+      </div>
+    )
+  })
+
   render() {
     return (
       <div>
