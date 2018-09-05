@@ -63,6 +63,9 @@ export const gardenFetchAll = () => async dispatch => {
     }
 }
 
-export const gardenActivate = (garden) => {
-    
+export const activateGarden = (garden) => {
+    return {
+        type: types.ACTIVATE_GARDEN,
+        payload: garden
+    }
 }

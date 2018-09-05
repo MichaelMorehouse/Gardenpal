@@ -14,10 +14,11 @@ export class GardenList extends Component {
   renderGardenList = () => this.props.gardens.map(garden => {
     return (
       <div>
-        {Object.keys(garden).map((prop, i) =>
-            <div key={i}>{prop}: {garden[prop]}</div>
-        )}
-        <br />
+        <div>Name: {garden.name}</div>
+        <div>Dimensions: {garden.gardenX} x {garden.gardenY}</div>
+        <div>Location: {garden.location}</div>
+        <button onClick={this.props.activateGarden}>Activate Garden</button>
+        <br /><br />
       </div>
     )
   })
