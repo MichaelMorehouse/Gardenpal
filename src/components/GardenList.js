@@ -10,11 +10,11 @@ export class GardenList extends Component {
   
   renderGardenList = () => this.props.gardens.map(garden => {
     return (
-      <div>
+      <div key={garden._id}>
         <div>Name: {garden.name}</div>
         <div>Dimensions: {garden.gardenX} x {garden.gardenY}</div>
         <div>Location: {garden.location}</div>
-        <button onClick={this.props.activateGarden}>Activate Garden</button>
+        <button onClick={()=>this.props.activateGarden({gardenId: garden._id})}>Activate Garden</button>
         <br /><br />
       </div>
     )
@@ -30,7 +30,8 @@ export class GardenList extends Component {
 }
 
 const mapStateToProps = (state) => ({
-  gardens: state.garden.gardens
+  gardens: state.garden.gardens,
+  authenticated: state.auth.authenticated
 })
 
 export default connect(mapStateToProps, actions)(GardenList)

@@ -8,6 +8,8 @@ const initialState = {
 
 export default (state = initialState, action) => {
   switch (action.type) {
+    case types.ACTIVATE_GARDEN:
+      return {...state, activeGarden: action.payload}
     case types.GARDEN_FETCH_ALL:
       return {...state, gardens: action.payload}
     case types.GARDEN_ERROR:

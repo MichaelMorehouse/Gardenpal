@@ -31,6 +31,7 @@ export const signin = (formProps, callback) => async dispatch => {
             formProps
         )
         dispatch({ type: types.AUTH_USER, payload: response.data.token })
+        console.log(response.data.token)
         localStorage.setItem('token', response.data.token)
         callback()
     } catch (err) {
@@ -40,9 +41,11 @@ export const signin = (formProps, callback) => async dispatch => {
 
 export const gardenCreate = (formProps, callback) => async dispatch => {
     try {
+        const token = localStorage.getItem('token')
+        const postData = {...formProps, token}
         await axios.post(
             'http://localhost:3090/gardencreate',
-            formProps
+            postData
         )
         callback()
     } catch (err) {
@@ -52,8 +55,10 @@ export const gardenCreate = (formProps, callback) => async dispatch => {
 
 export const gardenFetchAll = () => async dispatch => {
     try {
-        const response = await axios.get(
-            'http://localhost:3090/gardenlist'
+        const postData = { token: localStorage.getItem('token')}
+        const response = await axios.post(
+            'http://localhost:3090/gardenlist',
+            postData
         )
         console.log(response)
         dispatch({type: types.GARDEN_FETCH_ALL, payload: response.data})
@@ -62,9 +67,18 @@ export const gardenFetchAll = () => async dispatch => {
     }
 }
 
-export const activateGarden = (garden) => {
-    return {
-        type: types.ACTIVATE_GARDEN,
-        payload: garden
+export const activateGarden = gardenId => async dispatch => {
+    try {
+        const token = localStorage.getItem('token')
+        const postData = {...gardenId, token}
+        console.log(postData)
+        const response = await axios.post(
+            'http://localhost:3090/activategarden',
+            postData
+        )
+        console.log(response.data)
+        dispatch({type: types.ACTIVATE_GARDEN, payload: response.data})
+    } catch (err) {
+        dispatch({type: types.GARDEN_ERROR, payload: 'Error activating garden'})
     }
 }

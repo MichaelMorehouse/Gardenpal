@@ -7,7 +7,7 @@ export default ChildComponent => {
             this.shouldNavigateAway()
         }
     
-        componentDidUpdate = (prevProps, prevState) => {
+        componentDidUpdate = () => {
             this.shouldNavigateAway()
         }
         
