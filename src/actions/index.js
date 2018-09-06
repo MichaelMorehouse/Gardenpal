@@ -82,3 +82,27 @@ export const activateGarden = gardenId => async dispatch => {
         dispatch({type: types.GARDEN_ERROR, payload: 'Error activating garden'})
     }
 }
+
+export const plantNew = plant => dispatch => {
+    try {
+        console.log(plant)
+        dispatch({type: types.PLANT_NEW, payload: plant})
+    } catch (err) {
+        dispatch({type: types.GARDEN_ERROR, payload: 'Error planting new'})
+    }
+}
+
+export const confirmPlantChanges = plantChanges => async dispatch => {
+    try {
+        const token = localStorage.getItem('token')
+        const postData = {plantChanges, token}
+        const response = await axios.post(
+            'http://localhost:3090/confirmplantchanges',
+            postData
+        )
+        console.log(response)
+        // dispatch({type: types.FETCH_GARDEN, payload: response.data})
+    } catch (err) {
+        dispatch({type: types.GARDEN_ERROR, payload: 'Error saving plant changes'})
+    }
+}

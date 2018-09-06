@@ -1,9 +1,10 @@
 import types from '../actions/types'
 
 const initialState = {
-  activeGarden: null,
+  activeGarden: {},
   gardens: [],
-  createError: ''
+  createError: '',
+  plantChanges: []
 }
 
 export default (state = initialState, action) => {
@@ -14,6 +15,8 @@ export default (state = initialState, action) => {
       return {...state, gardens: action.payload}
     case types.GARDEN_ERROR:
       return {...state, createError: action.payload}
+    case types.PLANT_NEW:
+      return {...state, plantChanges: [...state.plantChanges, action.payload]}
     default:
       return state
   }
