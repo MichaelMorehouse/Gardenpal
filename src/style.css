@@ -16,6 +16,11 @@ body {
     padding: 10px;
 }
 
+/* Canvas styles */
+canvas {
+    border: 1px solid black;
+}
+
 /* Navbar styles */
 .navbar {
     display: flex;
