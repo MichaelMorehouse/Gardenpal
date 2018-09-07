@@ -34,6 +34,7 @@ class Canvas extends Component {
     const ctx = this.canvasRef.current.getContext('2d');
     ctx.clearRect(0, 0, width, height)
     this.drawCanvasGrid(ctx);
+    this.drawPlantedPlants(ctx)
   }
 
   drawCanvasGrid(ctx) {
@@ -67,6 +68,21 @@ class Canvas extends Component {
       ctx.moveTo(0, gridY[i])
       ctx.lineTo(width, gridY[i])
       ctx.stroke()
+    }
+  }
+
+  drawPlantedPlants(ctx) {
+    debugger
+    if(this.props.garden.plants) {
+      for (var i=0; i < this.props.garden.plants.length; i++) {
+        const plant = this.props.garden.plants[i]
+        const canvasX = plant.plantX * width / this.props.garden.gardenX
+        const canvasY = plant.plantY * height / this.props.garden.gardenY
+        const canvasR = 10 * width / this.props.garden.gardenX
+        ctx.beginPath();
+        ctx.arc(canvasX, canvasY, canvasR, 0, Math.PI * 2);
+        ctx.stroke();
+      }
     }
   }
 
