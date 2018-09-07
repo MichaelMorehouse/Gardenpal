@@ -1,21 +1,30 @@
 import React, { Component } from 'react'
 import requireAuth from '../requireAuth'
-import Canvas from './Canvas'
-import GardenDetail from './GardenDetail'
-import PlantingBar from './PlantingBar' 
-import PlantList from './PlantList'
-
+import { compose } from 'redux'
+import { connect } from 'react-redux'
+import * as actions from '../../actions'
 class Garden extends Component {
+    componentDidMount = () => {
+        if (!this.props.garden._id) {
+            this.props.fetchGarden()
+        }
+    }
+    
     render() {
-        return (
-            <div>
-                <PlantingBar />
-                <Canvas />
-                <PlantList />
-                <GardenDetail />
-            </div>
-        )
+        const { children } = this.props;
+
+        const childrenWithProps = React.Children.map(children, child =>
+          React.cloneElement(child, { garden: this.props.garden }));
+    
+        return <div>{childrenWithProps}</div>
     }
 }
 
-export default requireAuth(Garden)
+const mapStateToProps = state => ({
+    garden: state.garden.activeGarden
+})
+
+export default compose(
+    connect(mapStateToProps, actions),
+    requireAuth
+)(Garden)

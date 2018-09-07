@@ -3,11 +3,12 @@ import { connect } from 'react-redux'
 
 export class PlantList extends Component {
   renderPlants() {
-    if(this.props.plants) {
-      return this.props.plants.map((plant, i) => {
+    if(this.props.garden.plants) {
+      return this.props.garden.plants.map((plant, i) => {
         return (
-          <div key={plant._id}>
-            {plant.plantType} {i+1}
+          <div key={i}>
+            <div>type: {plant.plantType} {i}</div>
+            <div>x: {plant.plantX} y: {plant.plantY}</div>
           </div>
         )
       })
@@ -16,7 +17,7 @@ export class PlantList extends Component {
   render() {
     return (
       <div>
-        IM THE PLANT LIST
+        Plant list:
         {this.renderPlants()}
       </div>
     )
@@ -24,7 +25,6 @@ export class PlantList extends Component {
 }
 
 const mapStateToProps = (state) => ({
-  plants: state.garden.activeGarden.plants
 })
 
 const mapDispatchToProps = {

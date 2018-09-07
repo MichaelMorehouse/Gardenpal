@@ -15,6 +15,11 @@ import Signin from './components/auth/Signin'
 import Splash from './components/Splash'
 import GardenList from './components/GardenList'
 import GardenCreate from './components/GardenCreate'
+import Canvas from './components/garden/Canvas'
+import GardenDetail from './components/garden/GardenDetail'
+import PlantingBar from './components/garden/PlantingBar' 
+import PlantList from './components/garden/PlantList'
+
 
 const store = createStore(
     reducers,
@@ -32,7 +37,16 @@ ReactDOM.render(
                 <Route path="/signup" component={Signup} />
                 <Route path="/signout" component={Signout} />
                 <Route path="/signin" component={Signin} />
-                <Route path="/garden" component={Garden} />
+                <Route path="/garden" render={() => {
+                    return (
+                        <Garden>
+                            <PlantingBar />
+                            <Canvas />
+                            <GardenDetail />
+                            <PlantList />
+                        </Garden>
+                    )
+                }} />
                 <Route path="/creategarden" component={GardenCreate} />
                 <Route path="/gardenlist" component={GardenList} />
             </App>

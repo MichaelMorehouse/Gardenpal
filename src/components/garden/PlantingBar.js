@@ -7,7 +7,12 @@ export class PlantingBar extends Component {
   renderPlantChanges() {
     return this.props.plantChanges.map((plant, i) => {
       return (
-        <div key={i}>{plant.plantType}</div>
+        <div key={i}>
+        {plant.plantType}
+        <div>
+          x: {plant.plantX} y: {plant.plantY}
+        </div>
+        </div>
       )
     })
   }
@@ -16,7 +21,8 @@ export class PlantingBar extends Component {
     return (
       <div>
         <button onClick={()=>this.props.plantNew({change: 'new', plantType: 'pepper'})}>New Plant</button>
-        <button onClick={()=>this.props.confirmPlantChanges(this.props.plantChanges)}>Confirm Plants</button>
+        <button onClick={()=>this.props.confirmPlantChanges(this.props.plantChanges)}>Confirm Changes</button>
+        <button onClick={()=>this.props.clearPlantChanges()}>Clear Changes</button>
         {this.renderPlantChanges()}
       </div>
     )

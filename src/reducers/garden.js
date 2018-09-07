@@ -17,6 +17,8 @@ export default (state = initialState, action) => {
       return {...state, createError: action.payload}
     case types.PLANT_NEW:
       return {...state, plantChanges: [...state.plantChanges, action.payload]}
+    case types.CLEAR_PLANT_CHANGES:
+      return {...state, plantChanges: []}
     default:
       return state
   }

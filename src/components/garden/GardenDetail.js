@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-
 export class GardenDetail extends Component {
   renderDetails() {
     if (this.props.garden) {

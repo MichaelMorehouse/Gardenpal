@@ -60,7 +60,6 @@ export const gardenFetchAll = () => async dispatch => {
             'http://localhost:3090/gardenlist',
             postData
         )
-        console.log(response)
         dispatch({type: types.GARDEN_FETCH_ALL, payload: response.data})
     } catch (err) {
         dispatch({type: types.GARDEN_ERROR, payload: 'Error retrieving garden list'})
@@ -71,12 +70,11 @@ export const activateGarden = gardenId => async dispatch => {
     try {
         const token = localStorage.getItem('token')
         const postData = {...gardenId, token}
-        console.log(postData)
         const response = await axios.post(
             'http://localhost:3090/activategarden',
             postData
         )
-        console.log(response.data)
+        console.log(response)
         dispatch({type: types.ACTIVATE_GARDEN, payload: response.data})
     } catch (err) {
         dispatch({type: types.GARDEN_ERROR, payload: 'Error activating garden'})
@@ -92,6 +90,14 @@ export const plantNew = plant => dispatch => {
     }
 }
 
+export const clearPlantChanges = () => dispatch => {
+    try {
+        dispatch({type: types.CLEAR_PLANT_CHANGES})
+    } catch (err) {
+        dispatch({type: types.GARDEN_ERROR, payload: 'Error clearing pending changes'})
+    }
+}
+
 export const confirmPlantChanges = plantChanges => async dispatch => {
     try {
         const token = localStorage.getItem('token')
@@ -100,9 +106,21 @@ export const confirmPlantChanges = plantChanges => async dispatch => {
             'http://localhost:3090/confirmplantchanges',
             postData
         )
-        console.log(response)
-        // dispatch({type: types.FETCH_GARDEN, payload: response.data})
+        dispatch({type: types.CLEAR_PLANT_CHANGES})
     } catch (err) {
         dispatch({type: types.GARDEN_ERROR, payload: 'Error saving plant changes'})
+    }
+}
+
+export const fetchGarden = () => async dispatch => {
+    try {
+        const token = localStorage.getItem('token')
+        const response = await axios.post(
+            'http://localhost:3090/fetchgarden',
+            {token}
+        )
+        dispatch({type: types.ACTIVATE_GARDEN, payload: response.data})
+    } catch (err) {
+        dispatch({type: types.GARDEN_ERROR, payload: 'Error fetching garden'})
     }
 }
