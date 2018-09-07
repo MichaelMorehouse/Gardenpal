@@ -15,8 +15,17 @@ class Garden extends Component {
 
         const childrenWithProps = React.Children.map(children, child =>
           React.cloneElement(child, { garden: this.props.garden }));
-    
-        return <div>{childrenWithProps}</div>
+
+          return (
+            <div>
+                <div className="row">
+                    <div className="col-2">{childrenWithProps[0]}</div>
+                    <div className="col-6">{childrenWithProps[1]}</div>
+                    <div className="col-4">{childrenWithProps[2]}</div>
+                </div>
+                <div>{childrenWithProps[3]}</div>
+            </div>
+        )
     }
 }
 

@@ -106,6 +106,7 @@ export const confirmPlantChanges = plantChanges => async dispatch => {
             'http://localhost:3090/confirmplantchanges',
             postData
         )
+        console.log(response)
         dispatch({type: types.CLEAR_PLANT_CHANGES})
     } catch (err) {
         dispatch({type: types.GARDEN_ERROR, payload: 'Error saving plant changes'})
