@@ -1,7 +1,7 @@
 import axios from 'axios'
 import types from './types'
 
-const host = process.env.API_URI || 'http://localhost:3090/'
+const host = process.env.API_URI || 'https://gardenpal-api.herokuapp.com/' || 'http://localhost:3090/'
 
 const route = route => host + route
 
