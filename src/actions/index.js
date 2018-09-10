@@ -1,10 +1,14 @@
 import axios from 'axios'
 import types from './types'
 
+const host = process.env.API_URI || 'http://localhost:3090/'
+
+const route = route => host + route
+
 export const signup = (formProps, callback) => async dispatch => {
     try {
         const response = await axios.post(
-            'http://localhost:3090/signup', 
+            route('signup'), 
             formProps
         )
         dispatch({ type: types.AUTH_USER, payload: response.data.token })
@@ -27,7 +31,7 @@ export const signout = () => {
 export const signin = (formProps, callback) => async dispatch => {
     try {
         const response = await axios.post(
-            'http://localhost:3090/signin', 
+            route('signin'), 
             formProps
         )
         dispatch({ type: types.AUTH_USER, payload: response.data.token })
@@ -44,7 +48,7 @@ export const gardenCreate = (formProps, callback) => async dispatch => {
         const token = localStorage.getItem('token')
         const postData = {...formProps, token}
         await axios.post(
-            'http://localhost:3090/gardencreate',
+            route('gardencreate'),
             postData
         )
         callback()
@@ -57,7 +61,7 @@ export const gardenFetchAll = () => async dispatch => {
     try {
         const postData = { token: localStorage.getItem('token')}
         const response = await axios.post(
-            'http://localhost:3090/gardenlist',
+            route('gardenlist'),
             postData
         )
         dispatch({type: types.GARDEN_FETCH_ALL, payload: response.data})
@@ -71,7 +75,7 @@ export const activateGarden = gardenId => async dispatch => {
         const token = localStorage.getItem('token')
         const postData = {...gardenId, token}
         const response = await axios.post(
-            'http://localhost:3090/activategarden',
+            route('activategarden'),
             postData
         )
         console.log(response)
@@ -103,7 +107,7 @@ export const confirmPlantChanges = plantChanges => async dispatch => {
         const token = localStorage.getItem('token')
         const postData = {plantChanges, token}
         const response = await axios.post(
-            'http://localhost:3090/confirmplantchanges',
+            route('confirmplantchanges'),
             postData
         )
         console.log(response)
@@ -117,7 +121,7 @@ export const fetchGarden = () => async dispatch => {
     try {
         const token = localStorage.getItem('token')
         const response = await axios.post(
-            'http://localhost:3090/fetchgarden',
+            route('fetchgarden'),
             {token}
         )
         dispatch({type: types.ACTIVATE_GARDEN, payload: response.data})
