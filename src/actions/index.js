@@ -112,6 +112,7 @@ export const confirmPlantChanges = plantChanges => async dispatch => {
         )
         console.log(response)
         dispatch({type: types.CLEAR_PLANT_CHANGES})
+        dispatch({type: types.FETCH_GARDEN})
     } catch (err) {
         dispatch({type: types.GARDEN_ERROR, payload: 'Error saving plant changes'})
     }
