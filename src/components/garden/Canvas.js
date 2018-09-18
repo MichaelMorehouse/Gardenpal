@@ -121,5 +121,9 @@ class Canvas extends Component {
   }
 }
 
+const mapStateToProps = state => ({
+  garden: state.garden.activeGarden
+})
 
-export default connect(null, actions)(Canvas)
+
+export default connect(mapStateToProps, actions)(Canvas)

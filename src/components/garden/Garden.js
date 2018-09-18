@@ -3,6 +3,11 @@ import requireAuth from '../requireAuth'
 import { compose } from 'redux'
 import { connect } from 'react-redux'
 import * as actions from '../../actions'
+import Canvas from './Canvas'
+import GardenDetail from './GardenDetail'
+import PlantingBar from './PlantingBar' 
+import PlantList from './PlantList'
+
 class Garden extends Component {
     componentDidMount = () => {
         if (!this.props.garden._id) {
@@ -11,21 +16,16 @@ class Garden extends Component {
     }
     
     render() {
-        const { children } = this.props;
-
-        const childrenWithProps = React.Children.map(children, child =>
-          React.cloneElement(child, { garden: this.props.garden }));
-
           return (
             <div>
                 <div className="row">
-                    <div className="col-2">{childrenWithProps[0]}</div>
-                    <div className="col-6">{childrenWithProps[1]}</div>
-                    <div className="col-4">{childrenWithProps[2]}</div>
+                    <div className="col-2"><PlantingBar /></div>
+                    <div className="col-6"><Canvas /></div>
+                    <div className="col-4"><GardenDetail /></div>
                 </div>
-                <div>{childrenWithProps[3]}</div>
+                <div><PlantList /></div>
             </div>
-        )
+        ) 
     }
 }
 

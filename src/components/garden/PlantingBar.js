@@ -30,6 +30,7 @@ export class PlantingBar extends Component {
 }
 
 const mapStateToProps = (state) => ({
+  plants: state.garden.activeGarden.plants,
   plantChanges: state.garden.plantChanges
 })
 
