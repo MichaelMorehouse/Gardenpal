@@ -78,7 +78,7 @@ class Canvas extends Component {
         const plant = this.props.garden.plants[i]
         const canvasX = plant.plantX * width / this.props.garden.gardenX
         const canvasY = plant.plantY * height / this.props.garden.gardenY
-        const canvasR = 10 * width / this.props.garden.gardenX
+        const canvasR = 10
         ctx.beginPath();
         ctx.arc(canvasX, canvasY, canvasR, 0, Math.PI * 2);
         ctx.stroke();
