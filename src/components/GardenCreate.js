@@ -7,7 +7,7 @@ import * as actions from '../actions'
 class GardenCreate extends Component {
     onSubmit = (formProps) => {
         this.props.gardenCreate(formProps, () => {
-            this.props.history.push('/garden')
+            this.props.history.push('/gardenlist')
         })
     }
 
