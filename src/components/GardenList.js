@@ -8,13 +8,19 @@ export class GardenList extends Component {
     this.props.gardenFetchAll()
   }
   
+  handleClick = gardenId => {
+    this.props.activateGarden({gardenId: gardenId}, () => {
+      this.props.history.push('/garden')
+    })
+  }
+  
   renderGardenList = () => this.props.gardens.map(garden => {
     return (
       <div key={garden._id}>
         <div>Name: {garden.name}</div>
         <div>Dimensions: {garden.gardenX} x {garden.gardenY}</div>
         <div>Location: {garden.location}</div>
-        <button onClick={()=>this.props.activateGarden({gardenId: garden._id})}>Activate Garden</button>
+        <button onClick={()=>this.handleClick(garden._id)}>Activate Garden</button>
         <br /><br />
       </div>
     )
