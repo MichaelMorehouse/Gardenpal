@@ -20,7 +20,7 @@ export class PlantingBar extends Component {
   render() {
     return (
       <div>
-        <button onClick={()=>this.props.plantNew({change: 'new', plantType: 'pepper'})}>New Plant</button>
+        <button>New Plant</button>
         <button onClick={()=>this.props.confirmPlantChanges(this.props.plantChanges)}>Confirm Changes</button>
         <button onClick={()=>this.props.clearPlantChanges()}>Clear Changes</button>
         {this.renderPlantChanges()}
