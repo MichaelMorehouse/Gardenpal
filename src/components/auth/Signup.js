@@ -43,7 +43,7 @@ class Signup extends Component {
     }
 }
 
-const mapStateToProps = state => ({ authenticated: state.auth.errorMessage })
+const mapStateToProps = state => ({ errorMessage: state.auth.errorMessage })
 
 
 export default compose(
