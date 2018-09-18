@@ -1,9 +1,13 @@
 import axios from 'axios'
 import types from './types'
 
-const host = process.env.API_URI || 'https://gardenpal-api.herokuapp.com/' || 'http://localhost:3090/'
+const host = process.env.NODE_ENV === 'production' ?
+    process.env.API_URI :
+    process.env.REACT_APP_DEV_API_URL
 
-const route = route => host + route
+const route = route => {
+    return host + route
+}
 
 export const signup = (formProps, callback) => async dispatch => {
     try {
@@ -15,6 +19,7 @@ export const signup = (formProps, callback) => async dispatch => {
         localStorage.setItem('token', response.data.token)
         callback()
     } catch (err) {
+        debugger
         dispatch({type: types.AUTH_ERROR, payload: 'Email in use'})
     }
 }
@@ -51,6 +56,7 @@ export const gardenCreate = (formProps, callback) => async dispatch => {
             route('gardencreate'),
             postData
         )
+        debugger
         callback()
     } catch (err) {
         dispatch({type: types.GARDEN_ERROR, payload: 'Invalid garden properties'})
@@ -70,7 +76,7 @@ export const gardenFetchAll = () => async dispatch => {
     }
 }
 
-export const activateGarden = gardenId => async dispatch => {
+export const activateGarden = (gardenId, callback) => async dispatch => {
     try {
         const token = localStorage.getItem('token')
         const postData = {...gardenId, token}
@@ -80,6 +86,7 @@ export const activateGarden = gardenId => async dispatch => {
         )
         console.log(response)
         dispatch({type: types.ACTIVATE_GARDEN, payload: response.data})
+        callback()
     } catch (err) {
         dispatch({type: types.GARDEN_ERROR, payload: 'Error activating garden'})
     }
