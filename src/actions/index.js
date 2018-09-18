@@ -19,7 +19,6 @@ export const signup = (formProps, callback) => async dispatch => {
         localStorage.setItem('token', response.data.token)
         callback()
     } catch (err) {
-        debugger
         dispatch({type: types.AUTH_ERROR, payload: 'Email in use'})
     }
 }
@@ -56,7 +55,7 @@ export const gardenCreate = (formProps, callback) => async dispatch => {
             route('gardencreate'),
             postData
         )
-        debugger
+
         callback()
     } catch (err) {
         dispatch({type: types.GARDEN_ERROR, payload: 'Invalid garden properties'})

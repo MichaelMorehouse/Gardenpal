@@ -72,7 +72,7 @@ class Canvas extends Component {
   }
 
   drawPlantedPlants(ctx) {
-    debugger
+
     if(this.props.garden.plants) {
       for (var i=0; i < this.props.garden.plants.length; i++) {
         const plant = this.props.garden.plants[i]
