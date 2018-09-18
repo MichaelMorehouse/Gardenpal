@@ -55,7 +55,6 @@ export const gardenCreate = (formProps, callback) => async dispatch => {
             route('gardencreate'),
             postData
         )
-
         callback()
     } catch (err) {
         dispatch({type: types.GARDEN_ERROR, payload: 'Invalid garden properties'})
