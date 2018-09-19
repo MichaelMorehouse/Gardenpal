@@ -2,7 +2,7 @@ import axios from 'axios'
 import types from './types'
 
 const host = process.env.NODE_ENV === 'production' ?
-    process.env.API_URI :
+    process.env.REACT_APP_API_URI :
     process.env.REACT_APP_DEV_API_URL
 
 const route = route => {
@@ -34,6 +34,7 @@ export const signout = () => {
 
 export const signin = (formProps, callback) => async dispatch => {
     try {
+        console.log(route('signin'))
         const response = await axios.post(
             route('signin'), 
             formProps
